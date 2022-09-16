@@ -9,7 +9,7 @@ HortusWifi::HortusWifi(const char* ssid, const char* password, const char* ip)
   #endif
   
   WiFi.mode(WIFI_STA);
-  WiFi.begin("FASTWEB-2yurFq", "yBqCDXC6w8");
+  WiFi.begin(ssid, password);
   Serial.print("Connecting to WiFi ..");
   
   while (WiFi.status() != WL_CONNECTED) {

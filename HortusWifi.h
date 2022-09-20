@@ -2,14 +2,15 @@
 #define HortusWifi_h
 
 #include "Arduino.h"
+#include <ArduinoOSCWiFi.h>
 #include <WiFi.h>
 
-class HortusWifi
-{
-  public:
+class HortusWifi {
+public:
     HortusWifi(const char* ssid, const char* password, const char* ip);
     void conn();
-  private:
+
+private:
     String _ip;
 };
 

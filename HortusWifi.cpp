@@ -13,7 +13,7 @@ const char* hortus_password = "francesco";
 const IPAddress _gateway(192, 168, SUBDOMAIN, 1);
 const IPAddress _subnet(255, 255, 255, 0);
 
-HortusWifi::HortusWifi(Connection conn, int ip, const char* awake)
+HortusWifi::HortusWifi(Connection conn, int ip, String& awake)
 {
 #ifdef ESP_PLATFORM
     WiFi.disconnect(true, true); // disable wifi, erase ap info

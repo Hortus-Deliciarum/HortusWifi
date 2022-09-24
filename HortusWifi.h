@@ -5,6 +5,8 @@
 #include <ArduinoOSCWiFi.h>
 #include <WiFi.h>
 
+//String _AWAKING_ = "/default";
+
 class HortusWifi {
 public:
 
@@ -14,7 +16,7 @@ public:
         HORTUS = 2
     };
 
-    HortusWifi(Connection conn = Connection::BARETTI, int ip = 0, const char* awake = "/default");
+    HortusWifi(Connection conn = Connection::BARETTI, int ip = 0, String& awake = (String&)("/default"));
     static const int RECV_PORT = 8000;
     static const int SEND_PORT = 10000;
     static const int AWK_PORT = 12000;

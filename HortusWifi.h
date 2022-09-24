@@ -7,20 +7,22 @@
 
 class HortusWifi {
 public:
+
     enum Connection {
         BARETTI = 0,
         GALLIARI = 1,
         HORTUS = 2
     };
 
-    // HortusWifi(const char* ssid, const char* password, const char* ip);
-    HortusWifi(Connection conn = Connection::BARETTI, int ip = 0);
+    HortusWifi(Connection conn = Connection::BARETTI, int ip = 0, const char* awake_address);
+    int send_awake_alert();
 
 private:
     Connection _conn;
-    const* char _ssid;
-    const* char _password;
+    const char* _ssid;
+    const char* _password;
     const IPAddress _ip;
+    const char* _awake;
 };
 
 #endif

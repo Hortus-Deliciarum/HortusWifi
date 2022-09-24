@@ -1,7 +1,8 @@
 #include "HortusWifi.h"
 #include "Arduino.h"
 
-#define SUBDOMAIN 0
+#define SUBDOMAIN   0
+#define SEND_PORT   10000
 
 const* char bar_ssid = "FASTWEB-2yurFq";
 const* char bar_password = "yBqCDXC6w8";
@@ -9,17 +10,18 @@ const* char gal_ssid = "FASTWEB-DAB6F7";
 const* char gal_password = "1NJYRZE2T4";
 const* char hortus_ssid = "francesco";
 const* char hortus_password = "francesco";
-// const IPAddress ip(192, 168, 0, 201);
 const IPAddress _gateway(192, 168, SUBDOMAIN, 1);
 const IPAddress _subnet(255, 255, 255, 0);
+const IPAddress _host(192, 168, SUBDOMAIN, 10);
 
-HortusWifi::HortusWifi(Connection conn, int ip)
+HortusWifi::HortusWifi(Connection conn, int ip, const char* awake_address)
 {
 #ifdef ESP_PLATFORM
     WiFi.disconnect(true, true); // disable wifi, erase ap info
     delay(1000);
 #endif
     _conn = conn;
+    _awake = awake_address;
 
     switch (_conn) {
     case Connection::BARETTI:
@@ -52,4 +54,10 @@ HortusWifi::HortusWifi(Connection conn, int ip)
     }
 
     Serial.println(WiFi.localIP());
+}
+
+int HortusWifi::send_awake_alert()
+{
+    OscWiFi.publish(_host, SEND_PORT, _awake, 1)  
+        ->setIntervalMsec(5000.f);  
 }

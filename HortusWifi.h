@@ -14,15 +14,17 @@ public:
         HORTUS = 2
     };
 
-    HortusWifi(Connection conn = Connection::BARETTI, int ip = 0, const char* awake_address);
-    int send_awake_alert();
+    HortusWifi(Connection conn = Connection::BARETTI, int ip = 0, const char* awake = "/default");
+    static const int RECV_PORT = 8000;
+    static const int SEND_PORT = 10000;
+    static const int AWK_PORT = 12000;
+    constexpr static const char* HOST = "192.168.0.10";
 
 private:
     Connection _conn;
     const char* _ssid;
     const char* _password;
-    const IPAddress _ip;
-    const char* _awake;
+    IPAddress _ip();
 };
 
 #endif

@@ -39,7 +39,7 @@ HortusWifi::HortusWifi(Connection conn, int ip, String& awake)
     WiFi.mode(WIFI_STA);
     WiFi.begin(_ssid, _password);
 
-    if (ip) {
+    if (ip && _conn == Connection::HORTUS) {
         IPAddress _ip((uint8_t)192, (uint8_t)168, (uint8_t)SUBDOMAIN, (uint8_t)ip);
         WiFi.config(_ip, _gateway, _subnet);
     }

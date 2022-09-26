@@ -3,12 +3,12 @@
 
 #define SUBDOMAIN 0
 
-const* char bar_ssid = "FASTWEB-2yurFq";
-const* char bar_password = "yBqCDXC6w8";
-const* char gal_ssid = "FASTWEB-DAB6F7";
-const* char gal_password = "1NJYRZE2T4";
-const* char hortus_ssid = "francesco";
-const* char hortus_password = "francesco";
+const char* bar_ssid = "FASTWEB-2yurFq";
+const char* bar_password = "yBqCDXC6w8";
+const char* gal_ssid = "FASTWEB-DAB6F7";
+const char* gal_password = "1NJYRZE2T4";
+const char* hortus_ssid = "francesco";
+const char* hortus_password = "francesco";
 // const IPAddress ip(192, 168, 0, 201);
 const IPAddress _gateway(192, 168, SUBDOMAIN, 1);
 const IPAddress _subnet(255, 255, 255, 0);
@@ -40,8 +40,8 @@ HortusWifi::HortusWifi(Connection conn, int ip)
     WiFi.begin(_ssid, _password);
 
     if (ip) {
-        _ip = IPAddress ip(192, 168, SUBDOMAIN, ip);
-        WiFi.config(_ip, gateway, subnet);
+        IPAddress _ip(192, 168, SUBDOMAIN, ip);
+        WiFi.config(_ip, _gateway, _subnet);
     }
 
     Serial.print("Connecting to WiFi ..");

@@ -1,8 +1,8 @@
 # HortusWifi
 arduino library
 
-copy this folder in 
+copy this folder to 
 
 ```bash
-~/Arduino/libraries
+$HOME/Arduino/libraries
 ```
